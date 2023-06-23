@@ -1,12 +1,10 @@
-FROM python:3.9
+FROM node:8
 
-WORKDIR /app/backend
+WORKDIR /app/
+COPY . /app/
 
-COPY requirements.txt /app/backend
-RUN pip install -r requirements.txt
+RUN npm install
 
-COPY . /app/backend
+EXPOSE 3000
 
-EXPOSE 8000
-
-CMD python /app/backend/manage.py runserver 0.0.0.0:8000
+CMD ["npm","start"]
